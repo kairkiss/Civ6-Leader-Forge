@@ -1,0 +1,10 @@
+-- Placeholder colors for icon testing. Replace with a full art pipeline later.
+
+INSERT OR REPLACE INTO Colors (Type, Color) VALUES
+  ('COLOR_{{prefix}}_PRIMARY', '36,48,43,255'),
+  ('COLOR_{{prefix}}_SECONDARY', '184,139,59,255');
+
+INSERT OR REPLACE INTO PlayerColors
+  (Type, Usage, PrimaryColor, SecondaryColor, TextColor)
+VALUES
+  ('{{leaderType}}_COLORS', 'Unique', 'COLOR_{{prefix}}_PRIMARY', 'COLOR_{{prefix}}_SECONDARY', 'COLOR_WHITE');

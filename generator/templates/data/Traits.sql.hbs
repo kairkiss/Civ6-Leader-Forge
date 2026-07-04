@@ -1,0 +1,45 @@
+-- Trait scaffolding. These modifiers are intentionally conservative MVP examples.
+
+INSERT OR REPLACE INTO Types (Type, Kind) VALUES
+  ('{{traitCivilization}}', 'KIND_TRAIT'),
+  ('{{traitLeader}}', 'KIND_TRAIT');
+
+INSERT OR REPLACE INTO Traits (TraitType, Name, Description) VALUES
+  ('{{traitCivilization}}', 'LOC_{{traitCivilization}}_NAME', 'LOC_{{traitCivilization}}_DESCRIPTION'),
+  ('{{traitLeader}}', 'LOC_{{traitLeader}}_NAME', 'LOC_{{traitLeader}}_DESCRIPTION');
+
+INSERT OR REPLACE INTO TraitModifiers (TraitType, ModifierId) VALUES
+  ('{{traitCivilization}}', '{{prefix}}_CIV_SCIENCE_MODIFIER'),
+  ('{{traitCivilization}}', '{{prefix}}_CIV_CULTURE_MODIFIER'),
+  ('{{traitCivilization}}', '{{prefix}}_CIV_GOLD_MODIFIER'),
+  ('{{traitCivilization}}', '{{prefix}}_CIV_FAITH_MODIFIER'),
+  ('{{traitLeader}}', '{{prefix}}_LEADER_PRODUCTION_MODIFIER'),
+  ('{{traitLeader}}', '{{prefix}}_LEADER_COMBAT_MODIFIER'),
+  ('{{traitLeader}}', '{{prefix}}_LEADER_GROWTH_MODIFIER'),
+  ('{{traitLeader}}', '{{prefix}}_LEADER_TRADE_MODIFIER');
+
+INSERT OR REPLACE INTO Modifiers (ModifierId, ModifierType, SubjectRequirementSetId) VALUES
+  ('{{prefix}}_CIV_SCIENCE_MODIFIER', 'MODIFIER_PLAYER_CITIES_ADJUST_CITY_YIELD_MODIFIER', NULL),
+  ('{{prefix}}_CIV_CULTURE_MODIFIER', 'MODIFIER_PLAYER_CITIES_ADJUST_CITY_YIELD_MODIFIER', NULL),
+  ('{{prefix}}_CIV_GOLD_MODIFIER', 'MODIFIER_PLAYER_CITIES_ADJUST_CITY_YIELD_MODIFIER', NULL),
+  ('{{prefix}}_CIV_FAITH_MODIFIER', 'MODIFIER_PLAYER_CITIES_ADJUST_CITY_YIELD_MODIFIER', NULL),
+  ('{{prefix}}_LEADER_PRODUCTION_MODIFIER', 'MODIFIER_PLAYER_CITIES_ADJUST_CITY_YIELD_MODIFIER', NULL),
+  ('{{prefix}}_LEADER_COMBAT_MODIFIER', 'MODIFIER_PLAYER_UNITS_ADJUST_COMBAT_STRENGTH', NULL),
+  ('{{prefix}}_LEADER_GROWTH_MODIFIER', 'MODIFIER_PLAYER_CITIES_ADJUST_CITY_GROWTH', NULL),
+  ('{{prefix}}_LEADER_TRADE_MODIFIER', 'MODIFIER_PLAYER_ADJUST_TRADE_ROUTE_YIELD', NULL);
+
+INSERT OR REPLACE INTO ModifierArguments (ModifierId, Name, Value) VALUES
+  ('{{prefix}}_CIV_SCIENCE_MODIFIER', 'YieldType', 'YIELD_SCIENCE'),
+  ('{{prefix}}_CIV_SCIENCE_MODIFIER', 'Amount', '{{bonuses.science}}'),
+  ('{{prefix}}_CIV_CULTURE_MODIFIER', 'YieldType', 'YIELD_CULTURE'),
+  ('{{prefix}}_CIV_CULTURE_MODIFIER', 'Amount', '{{bonuses.culture}}'),
+  ('{{prefix}}_CIV_GOLD_MODIFIER', 'YieldType', 'YIELD_GOLD'),
+  ('{{prefix}}_CIV_GOLD_MODIFIER', 'Amount', '{{bonuses.gold}}'),
+  ('{{prefix}}_CIV_FAITH_MODIFIER', 'YieldType', 'YIELD_FAITH'),
+  ('{{prefix}}_CIV_FAITH_MODIFIER', 'Amount', '{{bonuses.faith}}'),
+  ('{{prefix}}_LEADER_PRODUCTION_MODIFIER', 'YieldType', 'YIELD_PRODUCTION'),
+  ('{{prefix}}_LEADER_PRODUCTION_MODIFIER', 'Amount', '{{bonuses.production}}'),
+  ('{{prefix}}_LEADER_COMBAT_MODIFIER', 'Amount', '{{bonuses.combat}}'),
+  ('{{prefix}}_LEADER_GROWTH_MODIFIER', 'Amount', '{{bonuses.growth}}'),
+  ('{{prefix}}_LEADER_TRADE_MODIFIER', 'YieldType', 'YIELD_GOLD'),
+  ('{{prefix}}_LEADER_TRADE_MODIFIER', 'Amount', '{{bonuses.trade}}');

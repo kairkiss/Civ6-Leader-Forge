@@ -1,0 +1,27 @@
+-- Simple AI agenda scaffolding. Tune values after local gameplay tests.
+
+INSERT OR REPLACE INTO Types (Type, Kind) VALUES
+  ('{{agendaType}}', 'KIND_AGENDA');
+
+INSERT OR REPLACE INTO Agendas (AgendaType, Name, Description) VALUES
+  ('{{agendaType}}', 'LOC_{{agendaType}}_NAME', 'LOC_{{agendaType}}_DESCRIPTION');
+
+INSERT OR REPLACE INTO HistoricalAgendas (LeaderType, AgendaType) VALUES
+  ('{{leaderType}}', '{{agendaType}}');
+
+INSERT OR REPLACE INTO AiListTypes (ListType) VALUES
+  ('{{prefix}}_Yields'),
+  ('{{prefix}}_PseudoYields');
+
+INSERT OR REPLACE INTO AiLists (ListType, AgendaType, System) VALUES
+  ('{{prefix}}_Yields', '{{agendaType}}', 'Yields'),
+  ('{{prefix}}_PseudoYields', '{{agendaType}}', 'PseudoYields');
+
+INSERT OR REPLACE INTO AiFavoredItems (ListType, Item, Value) VALUES
+  ('{{prefix}}_Yields', 'YIELD_SCIENCE', '{{ai.science}}'),
+  ('{{prefix}}_Yields', 'YIELD_CULTURE', '{{ai.culture}}'),
+  ('{{prefix}}_Yields', 'YIELD_FAITH', '{{ai.religion}}'),
+  ('{{prefix}}_Yields', 'YIELD_GOLD', '{{ai.trade}}'),
+  ('{{prefix}}_PseudoYields', 'PSEUDOYIELD_UNIT_COMBAT', '{{ai.aggression}}'),
+  ('{{prefix}}_PseudoYields', 'PSEUDOYIELD_NAVAL_COMBAT', '{{ai.naval}}'),
+  ('{{prefix}}_PseudoYields', 'PSEUDOYIELD_WONDER', '{{ai.wonders}}');

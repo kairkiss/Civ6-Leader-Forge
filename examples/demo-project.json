@@ -1,0 +1,58 @@
+{
+  "version": 1,
+  "metadata": {
+    "modName": "Demo Forge Leader",
+    "author": "Civ6 Leader Forge",
+    "internalIdPrefix": "DEMO_FORGE"
+  },
+  "civilization": {
+    "name": "Demo Commonwealth",
+    "adjective": "Demo",
+    "abilityName": "Shared Workshops",
+    "abilityDescription": "Cities receive balanced production and culture support for early testing."
+  },
+  "leader": {
+    "name": "Avery Vale",
+    "abilityName": "Measured Ambition",
+    "abilityDescription": "Gain steady science and trade bonuses without relying on official assets."
+  },
+  "bonuses": {
+    "science": 3,
+    "culture": 2,
+    "gold": 1,
+    "faith": 0,
+    "production": 2,
+    "combat": 0,
+    "growth": 1,
+    "trade": 2
+  },
+  "ai": {
+    "aggression": 4,
+    "science": 8,
+    "culture": 6,
+    "religion": 3,
+    "naval": 5,
+    "trade": 7,
+    "wonders": 4
+  },
+  "text": {
+    "leaderIntro": "A pragmatic leader focused on learning, exchange, and careful growth.",
+    "civilizationIntro": "A test civilization designed for generator verification.",
+    "loadingScreen": "Build a durable society through measured ambition and shared knowledge.",
+    "greeting": "Welcome. Let us compare discoveries and trade fairly.",
+    "denounce": "Your promises have become too thin to trust.",
+    "declareWar": "We will not wait while your threat grows unchecked.",
+    "defeat": "The experiment ends here, but its lessons remain."
+  },
+  "assets": [
+    {
+      "role": "leaderPortrait"
+    },
+    {
+      "role": "leaderBackground"
+    },
+    {
+      "role": "civilizationIcon"
+    }
+  ]
+}
