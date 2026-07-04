@@ -108,12 +108,13 @@ export function App() {
     [activeStep],
   );
 
-  async function chooseOutputDir() {
+  async function chooseOutputDir(): Promise<string | null> {
     const selected = await window.forgeApi.selectOutputDirectory();
     if (selected) {
       setOutputDir(selected);
       setMessage(`Output directory selected: ${selected}`);
     }
+    return selected;
   }
 
   async function chooseImage(role: Civ6LeaderProjectConfig['assets'][number]['role']) {
@@ -131,13 +132,14 @@ export function App() {
       setMessage('Please fix validation errors before generating.');
       return;
     }
-    if (!outputDir) {
-      await chooseOutputDir();
-      if (!outputDir) {
+    let selectedOutputDir = outputDir;
+    if (!selectedOutputDir) {
+      selectedOutputDir = (await chooseOutputDir()) ?? '';
+      if (!selectedOutputDir) {
         return;
       }
     }
-    const result = await window.forgeApi.generateMod(form.getValues(), outputDir);
+    const result = await window.forgeApi.generateMod(form.getValues(), selectedOutputDir);
     setGenerated(result);
     setMessage(`Generated ${result.modFolderName}`);
   }

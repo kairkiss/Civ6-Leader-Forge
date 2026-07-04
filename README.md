@@ -13,7 +13,7 @@ The repository does not include Firaxis, 2K, or Civilization VI official images,
 - Electron + React + TypeScript desktop app.
 - Template selection for Blank, Conqueror, Scientist, Patron, Theocrat, Merchant, Builder, and Navigator styles.
 - Forms for leader, civilization, ability, AI personality, and diplomacy text.
-- User image import and preview for portrait, background, and civilization icon.
+- User image import, crop/preview flow, multi-size PNG export, and resource directory placeholders for portrait, background, and civilization icon.
 - Generator library that can be reused by a future CLI.
 - Generates `.modinfo`, `Data/*.sql`, `Text/*.sql`, `Art/*`, and `README.txt`.
 - Exports ZIP archives and copies generated folders to the default Windows Civ6 Mods directory.
@@ -53,8 +53,10 @@ The default Windows Civilization VI Mods directory is:
 
 - First phase focuses on visual filling, template generation, and local file export.
 - Generated SQL is conservative scaffolding and should be play-tested.
+- Current image import only handles crop/preview behavior, multi-size PNG export, and placeholder resource directories.
+- PNG exports do not guarantee full in-game leader art display.
 - The app does not perform a complete Civilization VI art asset build.
-- DDS conversion, ArtDefs, XLP, icon atlases, leader scenes, and ModBuddy integration are TODO.
+- Complete DDS conversion, ArtDefs, XLP, icon atlas generation, leader scenes, and ModBuddy integration are planned for later versions.
 - The generated output is intended as a starting point for local testing, not a full game mechanics overhaul framework.
 
 ## Asset Pipeline TODO

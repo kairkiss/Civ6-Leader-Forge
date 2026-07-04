@@ -1,3 +1,4 @@
+import { existsSync, statSync } from 'node:fs';
 import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -32,11 +33,29 @@ interface TemplateContext {
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-function getTemplateRoot(): string {
-  if (process.versions.electron && process.resourcesPath) {
-    return path.join(process.resourcesPath, 'generator', 'templates');
+function getTemplateRootCandidates(): string[] {
+  const candidates = [
+    path.join(process.cwd(), 'generator', 'templates'),
+    path.resolve(__dirname, '..', 'templates'),
+  ];
+
+  if (process.resourcesPath) {
+    candidates.push(path.join(process.resourcesPath, 'generator', 'templates'));
   }
-  return path.resolve(__dirname, '..', 'templates');
+
+  return candidates;
+}
+
+export function getTemplateRoot(candidates = getTemplateRootCandidates()): string {
+  for (const candidate of candidates) {
+    if (existsSync(candidate) && statSync(candidate).isDirectory()) {
+      return candidate;
+    }
+  }
+
+  throw new Error(
+    `Civ6 Leader Forge templates directory was not found. Checked: ${candidates.join(', ')}`,
+  );
 }
 
 function stableGuid(seed: string): string {
